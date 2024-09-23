@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import requests
 import isodate
+import os
 
-YOUTUBE_API_KEY = 'ENTER YOUR_API_KEY'
+YOUTUBE_API_KEY = os.getenv('YOUTUBE_API_KEY')
 YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3'
 
 def calculate_duration(request):
