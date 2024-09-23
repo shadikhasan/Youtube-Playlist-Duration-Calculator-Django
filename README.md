@@ -19,8 +19,8 @@ Make sure you have the following installed:
 First, clone the repository to your local machine and navigate to the project directory:
 
 ```
-git clone https://github.com/shadikhasan/django_starter_template2.git
-cd django_starter_template2
+git clone https://github.com/shadikhasan/Youtube-Playlist-Duration-Calculator-Django.git
+cd Youtube Playlist Duration Calculator Django
 ```
 
 ### 2. Create a Virtual Environment
