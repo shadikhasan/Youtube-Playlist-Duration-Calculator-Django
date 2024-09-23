@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>YouTube Playlist Duration Calculator</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            margin-top: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+        .card-header {
+            background-color: #1592a2;
+            color: white;
+        }
+        .btn-go {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+        }
+        .btn-go:hover {
+            background-color: #c82333;
+        }
+        .logo {
+            width: 50px;
+            height: auto;
+        }
+        .duration-info {
+            text-align: center;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header text-center">
+                <img src="https://img.icons8.com/color/48/000000/youtube-play.png" class="logo" alt="YouTube Logo">
+                <h2 class="d-inline-block align-middle ms-2">YouTube Playlist Duration Calculator</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-white border-end-0" id="basic-addon1">URL</span>
+                        <input type="text" class="form-control border-start-0" id="playlist" name="playlist_id"
+                               placeholder="https://www.youtube.com/playlist?list=YOUR_PLAYLIST_ID">
+                        <button type="submit" class="btn btn-go">Go</button>
+                    </div>
+                </form>
+
+                {% if error %}
+                <div class="alert alert-danger mt-3" role="alert">
+                    {{ error }}
+                </div>
+                {% endif %}
+
+                {% if hours is not None %}
+                <div class="alert alert-success mt-3 duration-info" role="alert">
+                    <h4>Playlist Duration:</h4>
+                    <p><strong>{{ hours }} hours, {{ minutes }} minutes, and {{ seconds }} seconds</strong></p>
+                </div>
+                {% else %}
+                <div class="alert alert-info mt-3 duration-info" role="alert">
+                    <h4>Hey!</h4>
+                    <p>This app helps you calculate the total duration of a YouTube playlist. Just paste the URL above and hit Go.</p>
+                </div>
+                {% endif %}
+            </div>
+            <div class="card-footer text-muted text-center">
+                <a href="https://github.com/your-repo" target="_blank" class="text-muted text-decoration-none">
+                    <small>View Source on GitHub</small>
+                </a>
+                <br>
+                <small>Made by Your SHADIK</small>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
